@@ -1,0 +1,46 @@
+{
+    "Blank Draft": {
+        "client_name": "",
+        "client_address": "",
+        "items": [
+            {
+                "Description": "Custom Item",
+                "Quantity": 1,
+                "Price (RM)": 0.0
+            }
+        ]
+    },
+    "Kindle Mind - Setup": {
+        "client_name": "SG KINDLE EDUGROUP SDN BHD",
+        "client_address": "26-1 Jalan CP 1 Taman Cheng Permai, Cheng Permai, 75260 Melaka.\nAttn: Sally Foo\n",
+        "items": [
+            {
+                "Description": "Online Review Hub - Setup + First Month Maintanence",
+                "Quantity": 1,
+                "Price (RM)": 190.0
+            }
+        ]
+    },
+    "Kindle Mind - Monthly": {
+        "client_name": "Kindle Mind Cheng",
+        "client_address": "Cheng, Melaka\nAttn: Sally\n",
+        "items": [
+            {
+                "Description": "Online Review Hub - Monthly Maintenance",
+                "Quantity": 1,
+                "Price (RM)": 40.0
+            }
+        ]
+    },
+    "San Guo - Setup": {
+        "client_name": "San Guo",
+        "client_address": "Melaka\nAttn: Sally\n",
+        "items": [
+            {
+                "Description": "Online Review Hub - Setup",
+                "Quantity": 1,
+                "Price (RM)": 190.0
+            }
+        ]
+    }
+}

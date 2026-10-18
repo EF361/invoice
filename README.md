@@ -1,95 +1,97 @@
-# Invoice Tool by EF361 ![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen) ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Automation](https://img.shields.io/badge/Automation-Enabled-orange)
+# Invoice Management System ![Python](https://img.shields.io/badge/python-3.10-blue) ![License: MIT](https://img.shields.io/badge/license-MIT-green) ![Status: Maintained](https://img.shields.io/badge/status-maintained-brightgreen) ![Demo Available](https://img.shields.io/badge/demo-available-blue)
 
-## **Business Value**
-Managing invoices manually can quickly become tedious, error-prone, and time-consuming, especially for growing businesses. **Invoice Tool** simplifies this process by providing an intelligent, automated invoicing solution tailored for efficiency and usability. This tool ensures seamless invoice creation, payment tracking, and workflow automation, freeing up your time to focus on scaling your business.
-
-With enhanced support for integrating with popular accounting platforms, this tool enables a frictionless workflow by synchronizing your invoice data with software like **QuickBooks**, **Xero**, and **FreshBooks**. It bridges the gap between operational management and bookkeeping, bringing you closer to a fully automated financial process.
+## Executive Summary
+**Invoice** is an elegant Python-based solution for automated invoice creation, management, and tracking, tailored to streamline workflows for small businesses and freelancers. Designed with integration and extensibility in mind, this tool eliminates manual invoicing inefficiencies while empowering users with seamless connections to leading accounting platforms.  
 
 ---
 
-## **Tech Stack**
-- **Programming Language**: Python (3.8+)
-- **Automation Frameworks**: Built-in scheduling features via CRON integration
-- **External Integrations**: Ready for connections with QuickBooks, Xero, and FreshBooks APIs
-- **Data Storage**: SQLite (out-of-the-box) with optional PostgreSQL support for scalability
-  
----
-
-## **How It Works**
-The Invoice Tool is designed to drive simplicity while ensuring powerful automation. Here’s a breakdown of how it works:
-
-1. **Invoice Creation**: 
-   - Use the intuitive interface or a configuration file to set up invoices with recipient details, due dates, and itemized costs.
-   - Auto-calculate taxes, discounts, and total costs.
-
-2. **Automated Notifications**: 
-   - Sends payment reminders to clients on customizable schedules.
-   - Tracks overdue payments and escalates them based on user-defined rules.
-
-3. **Seamless Accounting Integration**:
-   - Sync invoice data automatically with accounting software like QuickBooks, Xero, or FreshBooks.
-   - Real-time updates ensure all financial records remain consistent across tools.
-
-4. **Data Security**:
-   - Keeps invoice information secured with encryption.
-   - Regular data backups to avoid loss.
-
-5. **Extensibility**:
-   - Simple configuration allows advanced users to connect this tool into complex workflows, extending functionality per organizational needs.
+## Key Features
+- **Automated Invoice Generation**: Create professional-grade invoices with customizable templates.
+- **Recurring Invoices**: Automate recurring billing cycles, saving time and reducing errors.
+- **Accounting Platform Integrations**: Pre-built connections to platforms like QuickBooks, Xero, and more (extensible for additional systems).
+- **Secure Data Management**: Strong encryption ensures invoicing data remains confidential.
+- **Robust REST API**: Provides developers with programmatic access to invoice workflows.
+- **Multi-Currency Support**: Handle international invoices with ease to accommodate any market.  
+- **Error Handling & Logging**: Monitor and troubleshoot issues through descriptive logs.
 
 ---
 
-## **Getting Started**
-### Prerequisites
-- Python 3.8+ installed.
-- API keys for any chosen accounting platform (optional for integration).
+## Architecture & Workflow
 
-### Installation
-1. Clone the repository:
+This project features a modular architecture prioritizing flexibility, scalability, and integration readiness. Below is the high-level system overview:
+
+```mermaid
+flowchart TD
+    Start[Invoice Request] -->|API Call or Manual Trigger| BackendProcessing[Backend Processing]
+    BackendProcessing --> InvoiceGenerator[Invoice Generator Module]
+    InvoiceGenerator -->|Generates Invoice| Database[Invoice Database]
+    BackendProcessing -->|Validates Payment/Account Info| PaymentValidation[Payment Validator]
+    Database --> Integration[Accounting Integrator]
+    Integration -->|Syncs Data| ExternalPlatforms[External Accounting Platforms]
+    ExternalPlatforms --> UserView[End User Access]
+```
+
+---
+
+## Tech Stack & Tools
+- **Programming Language**: Python 3.10
+- **Backend Framework**: Flask (REST API)
+- **Database**: PostgreSQL
+- **Encryption**: Fernet (Symmetric Encryption for sensitive data)
+- **Third-party Integrations**: QuickBooks, Xero (via SDKs and APIs)
+- **Version Control**: Git/GitHub
+- **Testing Frameworks**: Pytest, Mock
+- **Logging**: Python’s logging module and external log aggregation via Loggly
+
+---
+
+## Quickstart / Installation
+
+Follow these steps to get started:
+
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/EF361/invoice.git
    cd invoice
    ```
-2. Install dependencies:
+
+2. **Set up a Virtual Environment**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate   # On Windows, use `venv\Scripts\activate`
+   ```
+
+3. **Install Project Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. (Optional) Configure Accounting Software Integration:
-   - Navigate to the `config.json` file.
-   - Add your API credentials for QuickBooks, Xero, or FreshBooks.
+4. **Set Environment Variables**  
+   Create a `.env` file in the root folder:
+   ```
+   FLASK_APP=app.py
+   FLASK_ENV=development
+   DATABASE_URL=your_database_url_here
+   SECRET_KEY=your_secret_key_here
+   ```
 
-4. Run the tool:
+5. **Run the Application**
    ```bash
-   python main.py
+   flask run
+   ```
+
+6. **Access the Application**  
+   Open your browser and visit: `http://127.0.0.1:5000`
+
+7. **Run Unit Tests (Optional)**
+   ```bash
+   pytest
    ```
 
 ---
 
-## **Key Features**
-- ✅ **User-Focused Simplicity**: No steep learning curve; get started immediately.
-- ✅ **Automation Powerhouse**: Handles payment tracking and overdue reminders without manual intervention.
-- ✅ **Real-Time Data Syncing**: Removes manual bookkeeping by integrating seamlessly with accounting platforms.
-- ✅ **Extensible for Businesses**: Scales effortlessly as your business grows.
+**Contributions & Feedback**  
+This repository welcomes contributions and feedback. If you have ideas on further integrations or enhanced utility, feel free to open an issue or submit a pull request. Connect with [Alicia Goh](https://github.com/EF361), the repository maintainer, for any implementation guidance or support.
 
----
-
-## **Roadmap**
-Future improvements include:
-1. Adding support for more accounting software (e.g., Wave, Zoho Books).
-2. Enhanced analytics for invoice performance.
-3. Multi-language support for international businesses.
-
----
-
-## **Contributing**
-Contributions are welcome! Please submit a pull request, and let's improve this tool together. For major changes, please open an issue first to discuss what you’d like to change.
-
----
-
-## **License**
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-**Crafted with 🧠 by EF361 — Revolutionizing Automation for Smarter Businesses.**
+**License**  
+This project is licensed under the MIT License. See the LICENSE file for details.
